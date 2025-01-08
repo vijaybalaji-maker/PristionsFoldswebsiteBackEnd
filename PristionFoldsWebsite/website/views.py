@@ -40,23 +40,27 @@ class PristionFoldsEnquiry(APIView):
 
     def post(self, request):
         company_name = request.data.get("company_name")
-        country = request.data.get("country")
         year_of_establishment = request.data.get("year_of_establishment")
+        country = request.data.get("country")
+        state = request.data.get("state")
         district = request.data.get("district")
         pincode = request.data.get("pincode")
         number_of_branch = request.data.get("number_of_branch")
         email = request.data.get("email")
         mobile_number = request.data.get("mobile_number")
+        alternate_number = request.data.get("alternate_number")if request.data.get('alternate_number') else None
 
         data = {
             "company_name": company_name,
             "country": country,
             "year_of_establishment": year_of_establishment,
             "district": district,
+            "state": state,
             "email": email,
             "pincode": pincode,
             "number_of_branch": number_of_branch,
             "mobile_number": mobile_number,
+            "alternate_number": alternate_number,
         }
 
         serializer = PristionFoldsEnquirySerializer(data=data)
